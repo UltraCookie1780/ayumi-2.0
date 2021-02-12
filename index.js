@@ -1,5 +1,6 @@
 const { Client, Collection } = require("discord.js");
 const config = require("./config.json");
+const users = require("./rsc/users.json");
 const prefix = (config.prefix);
 const fs = require("fs");
 
@@ -23,6 +24,22 @@ eventhandler(client);
 client.on("message", async message => {
 
     if (message.author.bot) return;
+
+    if (!users[message.author.id]) {
+      users[message.author.id] = {
+        messages: 0,
+        waifus: {},
+        waifu_count: 0
+      };
+    }
+    users[message.author.id].messages++;
+    if (users[message.author.id].messages == 100) {
+      const role = message.guild.roles.cache.find(role => role.name === '100 Messages');
+      message.member.roles.add(role)
+    }
+    fs.writeFile("./rsc/users.json", JSON.stringify(users), err => {
+      if (err) console.log(err);
+    });
 
     if(!message.content.startsWith(prefix)&& message.content.startsWith(client.user.id)) return message.reply(`My Prefix is: **\`${prefix}\`**, type \`${prefix}help\` for more information!`);
     if (!message.content.startsWith(prefix)) return;
