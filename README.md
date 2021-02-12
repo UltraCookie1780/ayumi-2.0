@@ -15,6 +15,7 @@ If you want to use this bot for your own server follow these steps to set it up 
   "prefix": "(Your Custom Prefix Here)"
 }
 ```
+4. You will need to install all needed dependencies
 
 ## Features
 
