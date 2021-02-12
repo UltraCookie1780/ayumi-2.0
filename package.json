@@ -15,5 +15,5 @@
     "start": "node index.js"
   },
   "author": "UltraCookie#0818",
-  "license": "ISC"
+  "license": "MIT"
 }
