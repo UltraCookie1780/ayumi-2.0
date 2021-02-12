@@ -78,13 +78,6 @@ client.on("message", async message => {
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
       try{
         command.run(client, message, args, message.author, args.join(" "), prefix);
-        /* /////////////////////////////////////////
-          client is: the <DiscordClient>
-          message is: the <Message>
-          user is: the <DiscordUser>
-          text is: <everything after the command>
-          prefix is: <config.prefix>
-        */ ///////////////////////////////////////////////////////
       }catch (error){
         console.log(error)
         return message.reply(`Something went wrong while executing: \`${command.name}\``)
