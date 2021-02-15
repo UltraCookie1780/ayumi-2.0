@@ -7,15 +7,19 @@ Ayumi2.0 is a powerful discord bot based on the discord.js library. It has a lot
 If you want to use this bot for your own server follow these steps to set it up properly:
 
 1. Clone this repository to your local workspace
-2. Inside of `./rsc/` create a file called `users.json`
-3. In the main directory add a file called `config.json` and copy the following:
+2. In the main directory add a file called `config.json` and copy the following:
 ```
 {
   "token": "(Your Bot Token Here)",
-  "prefix": "(Your Custom Prefix Here)"
+  "prefix": "(Your Custom Prefix Here)",
+  "waifucost": (The price to collect a waifu),
+  "dbpass": "(Your Postgres Database Password Here)",
+  "dbuser": "(Your Postgres Database Username Here)"
 }
 ```
-4. You will need to install all needed dependencies
+4. You will need to install all needed dependencies(Insights -> Dependency Graph
+5. Run `node rsc/dbInit.js -f` from your main directory to setup the database
+6. Run `node index.js` to run the bot.
 
 ## Features
 
