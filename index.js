@@ -1,8 +1,13 @@
 const { Client, Collection } = require("discord.js");
+
 const config = require("./config.json");
-const users = require("./rsc/users.json");
 const prefix = (config.prefix);
+
 const fs = require("fs");
+
+const { Users, Waifus } = require('./rsc/connect');
+const { Op } = require('sequelize');
+const waifuPoints = new Collection();
 
 const client = new Client({
     disableEveryone: true,
@@ -21,29 +26,39 @@ client.categories = fs.readdirSync("./commands/");
 const eventhandler = require("./handlers/events"); 
 eventhandler(client);
 
+Reflect.defineProperty(waifuPoints, 'addb', {
+	value: async function addb(id, amount) {
+		const user = waifuPoints.get(id);
+		if (user) {
+			user.messages += Number(amount);
+			return user.save();
+		}
+		const newUser = await Users.create({ user_id: id, messages: amount });
+		waifuPoints.set(id, newUser);
+		return newUser;
+	},
+});
+
+Reflect.defineProperty(waifuPoints, 'getb', {
+	value: function getb(id) {
+		const user = waifuPoints.get(id);
+		return user ? user.messages : 0;
+	},
+});
+
+client.on('ready', async () => {
+    const storedBalances = await Users.findAll();
+    storedBalances.forEach(b => waifuPoints.set(b.user_id, b));
+  });
+
 client.on("message", async message => {
 
     if (message.author.bot) return;
+    waifuPoints.addb(message.author.id, 1);
 
-    if (!users[message.author.id]) {
-      users[message.author.id] = {
-        messages: 0,
-        waifus: {},
-        waifu_count: 0
-      };
-    }
-    users[message.author.id].messages++;
-    if (users[message.author.id].messages == 100) {
-      const role = message.guild.roles.cache.find(role => role.name === '100 Messages');
-      message.member.roles.add(role)
-    }
-    fs.writeFile("./rsc/users.json", JSON.stringify(users), err => {
-      if (err) console.log(err);
-    });
-
-    if(!message.content.startsWith(prefix)&& message.content.startsWith(client.user.id)) return message.reply(`My Prefix is: **\`${prefix}\`**, type \`${prefix}help\` for more information!`);
+    if (!message.content.startsWith(prefix) && message.content.startsWith(client.user.id)) return message.reply(`My Prefix is: **\`${prefix}\`**, type \`${prefix}help\` for more information!`);
     if (!message.content.startsWith(prefix)) return;
-    
+
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
     
@@ -77,7 +92,7 @@ client.on("message", async message => {
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
       try{
-        command.run(client, message, args, message.author, args.join(" "), prefix);
+        command.run(client, message, args, message.author, args.join(" "), prefix, waifuPoints);
       }catch (error){
         console.log(error)
         return message.reply(`Something went wrong while executing: \`${command.name}\``)
