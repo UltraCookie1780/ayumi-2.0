@@ -8,7 +8,7 @@ module.exports = {
     usage: "uptime",
     description: "Uptime information",
 
-    run: async (client, message, args, user, text, prefix) => {
+    run: async (client, message, args, user, text, prefix, waifuPoints) => {
         function duration(ms) { 
             const sec = Math.floor(ms / 1000 % 60).toString();
             const min = Math.floor(ms / (60*1000) % 60).toString();

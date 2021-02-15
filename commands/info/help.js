@@ -10,7 +10,7 @@ module.exports = {
         usage: "help [Command]",
         description: "Returns all Commmands, or one specific command",
 
-    run: async (client, message, args, user, text, prefix) => {
+    run: async (client, message, args, user, text, prefix, waifuPoints) => {
         if(args[0]){
             return getCMD(client,message,args[0]);
         }
