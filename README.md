@@ -19,9 +19,10 @@ If you want to use the code and setup this bot for yourself, then follow these s
   "dbuser": "(Your Postgres Database Username Here)"
 }
 ```
-4. You will need to install all needed dependencies(Insights -> Dependency Graph
-5. Run `node rsc/dbInit.js -f` from your main directory to setup the database
-6. Run `node index.js` to run the bot.
+4. You will need to install all needed dependencies(Insights -> Dependency Graph)
+5. You will need to install postgreSQL and setup a database with the SAME name as your postgres username (standard: postgres)
+6. Run `node rsc/dbInit.js -f` from your main directory to setup the database
+7. Run `node index.js` to run the bot.
 
 ## Features
 See the wiki here: [Wiki](https://github.com/UltraCookie1780/ayumi-2.0/wiki)
