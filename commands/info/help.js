@@ -11,12 +11,7 @@ module.exports = {
         description: "Returns all Commmands, or one specific command",
 
     run: async (client, message, args, user, text, prefix, waifuPoints) => {
-        if(args[0]){
-            return getCMD(client,message,args[0]);
-        }
-        else{
-            return getAll(client, message);
-        }
+        return args[0] ? getCMD(client,message,args[0]) : getAll(client, message)
     }
 }
 
