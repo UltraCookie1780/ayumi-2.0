@@ -7,8 +7,7 @@ module.exports = {
   description: "Displays your waifu collection",
   run: async (client, message, args, user, text, prefix, waifuPoints) => {
     const Discord = require('discord.js');
-    const Sequelize = require("sequelize");
-    const { Users, Waifus, UserWaifus } = require('../../rsc/connect');
+    const { Users, Waifus } = require('../../rsc/connect');
     const User = await Users.findOne({ where: { user_id: message.author.id }});
     const waifus = await User.getWaifus();
     if (waifus.count > 0) {
