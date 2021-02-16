@@ -28,6 +28,11 @@ See the wiki here: [Wiki](https://github.com/UltraCookie1780/ayumi-2.0/wiki)
 
 You are able to see all commands with the `+help` command. For more information on a specific command you can type `+help <command>`. 
 
+## Social
+- [YouTube](https://www.youtube.com/channel/UCeIM39CTf2D6_NqZOyyLx7w)
+- [Discord](https://discord.gg/ZWW6yBFSQk) ![](https://img.shields.io/discord/720937574318866432?color=blue&label=Discord&logo=discord&url=https://discord.gg/ZWW6yBFSQk)
+- [Instagram](https://www.instagram.com/ultracookie1780/)(Inactive)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 - Of course I am happy if you credit me somehow and follow me on my social media accounts
