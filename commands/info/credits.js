@@ -12,7 +12,7 @@ module.exports = {
         .setThumbnail('https://i.imgur.com/qeme9e0.png')
         .setTitle("CREDITS")
         .setDescription("[YouTube](https://www.youtube.com/channel/UCeIM39CTf2D6_NqZOyyLx7w)\n[Discord](https://discord.gg/ZWW6yBFSQk)\n[Instagram](https://www.instagram.com/ultracookie1780/)(Inactive)")
-        .setFooter("Ayumi2.0 provided by UltraCookie#0818");
+        .setFooter("Ayumi2.0 - provided by UltraCookie#0818");
         message.channel.send(embed)
     }
 }
