@@ -33,3 +33,6 @@ You are able to see all commands with the `+help` command. For more information 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 - Of course I am happy if you credit me somehow and follow me on my social media accounts
+
+
+![](https://raw.githubusercontent.com/UltraCookie1780/ayumi-2.0/master/rsc/img/cookie-3180329_1920.png)
