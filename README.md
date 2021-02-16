@@ -1,4 +1,4 @@
-# Ayumi2.0
+# Ayumi2.0 ![](https://img.shields.io/discord/720937574318866432?color=blue&label=Discord&logo=discord)
 
 Ayumi2.0 is a powerful discord bot based on the discord.js library. It has a lot of useful and fun features such as waifu collection, bot/server information and more. The bot is designed to keep the server active and more importantly safe.
 
@@ -27,8 +27,6 @@ If you want to use the code and setup this bot for yourself, then follow these s
 See the wiki here: [Wiki](https://github.com/UltraCookie1780/ayumi-2.0/wiki)
 
 You are able to see all commands with the `+help` command. For more information on a specific command you can type `+help <command>`. 
-
-
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
