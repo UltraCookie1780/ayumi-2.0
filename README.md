@@ -1,4 +1,4 @@
-# Ayumi2.0 ![](https://img.shields.io/discord/720937574318866432?color=blue&label=Discord&logo=discord)
+# Ayumi2.0 ![](https://img.shields.io/github/package-json/v/UltraCookie1780/ayumi-2.0?color=yellow&label=Version) ![](https://img.shields.io/discord/720937574318866432?color=blue&label=Discord&logo=discord&url=https://discord.gg/ZWW6yBFSQk)
 
 Ayumi2.0 is a powerful discord bot based on the discord.js library. It has a lot of useful and fun features such as waifu collection, bot/server information and more. The bot is designed to keep the server active and more importantly safe.
 
