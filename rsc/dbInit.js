@@ -11,6 +11,7 @@ const sequelize = new Sequelize(dbuser, dbuser, dbpass, {
 const database = require('../models/Waifus')(sequelize, Sequelize.DataTypes);
 require('../models/Users')(sequelize, Sequelize.DataTypes);
 require('../models/UserWaifus')(sequelize, Sequelize.DataTypes);
+require('../models/Servers')(sequelize, Sequelize.DataTypes);
 
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 
