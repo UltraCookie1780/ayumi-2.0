@@ -5,7 +5,7 @@ module.exports = {
     cooldown: 2,
     usage: "waifupoints",
     description: "Shows your waifupoints",
-    run: async (client, message, args, user, text, prefix, waifuPoints) => {	
+    run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {	
         var target = message.mentions.users.first() || message.author;
         var wp = waifuPoints.get(target.id);
         if (!wp) {
