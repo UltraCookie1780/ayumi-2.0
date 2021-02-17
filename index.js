@@ -5,9 +5,10 @@ const prefix = (config.prefix);
 
 const fs = require("fs");
 
-const { Users, Waifus } = require('./rsc/connect');
+const { Users, Waifus, Servers } = require('./rsc/connect');
 const { Op } = require('sequelize');
 const waifuPoints = new Collection();
+const servermessages = new Collection();
 
 const client = new Client({
     disableEveryone: true,
@@ -46,13 +47,37 @@ Reflect.defineProperty(waifuPoints, 'getb', {
 	},
 });
 
+Reflect.defineProperty(servermessages, 'addb', {
+	value: async function addb(id, amount) {
+		const server = servermessages.get(id);
+		if (server) {
+			server.messages += Number(amount);
+			return server.save();
+		}
+		const newServer = await Servers.create({ server_id: id, messages: amount, verified: false });
+		servermessages.set(id, newServer);
+		return newServer;
+	},
+});
+
+Reflect.defineProperty(servermessages, 'getb', {
+	value: function getb(id) {
+		const server = servermessages.get(id);
+		return server ? server.messages : 0;
+	},
+});
+
 client.on('ready', async () => {
-    const storedBalances = await Users.findAll();
-    storedBalances.forEach(b => waifuPoints.set(b.user_id, b));
+    const wp = await Users.findAll();
+    wp.forEach(b => waifuPoints.set(b.user_id, b));
+    const sm = await Servers.findAll();
+    sm.forEach(b => servermessages.set(b.server_id, b));
   });
 
 client.on("message", async message => {
 
+    if (message.channel.type == "dm") return;
+    servermessages.addb(message.guild.id, 1);
     if (message.author.bot) return;
     waifuPoints.addb(message.author.id, 1);
 
@@ -73,6 +98,12 @@ client.on("message", async message => {
         if (!cooldowns.has(command.name)) {
             cooldowns.set(command.name, new Collection());
         }
+
+        if (command.owner) {
+          if (message.author.id != config.owner) {
+            return message.reply(`you can't use this command.`);
+          }
+        }
         
         const now = Date.now();
         const timestamps = cooldowns.get(command.name);
@@ -92,7 +123,7 @@ client.on("message", async message => {
         timestamps.set(message.author.id, now);
         setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
       try{
-        command.run(client, message, args, message.author, args.join(" "), prefix, waifuPoints);
+        command.run(client, message, args, message.author, args.join(" "), prefix, waifuPoints, servermessages);
       }catch (error){
         console.log(error)
         return message.reply(`Something went wrong while executing: \`${command.name}\``)
