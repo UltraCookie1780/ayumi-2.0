@@ -10,6 +10,7 @@ const sequelize = new Sequelize(dbuser, dbuser, dbpass, {
 const Users = require('../models/Users')(sequelize, Sequelize.DataTypes);
 const Waifus = require('../models/Waifus')(sequelize, Sequelize.DataTypes);
 const UserWaifus = require('../models/UserWaifus')(sequelize, Sequelize.DataTypes);
+const Servers = require('../models/Servers')(sequelize, Sequelize.DataTypes);
 
 UserWaifus.belongsTo(Waifus, { foreignKey: 'waifu_id', as: 'waifu' });
 
@@ -43,4 +44,11 @@ Users.prototype.getWaifus = function() {
 	});
 };
 
-module.exports = { Users, Waifus, UserWaifus };
+/* eslint-enable-next-line func-names */
+Servers.prototype.verify = async function(id) {
+	const server = await Servers.findOne({ where: { server_id: id } });
+	server.verified = true;
+	return server.save();
+}
+
+module.exports = { Users, Waifus, UserWaifus, Servers };
