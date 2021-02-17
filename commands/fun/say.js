@@ -5,7 +5,7 @@ module.exports = {
     cooldown: 2,
     usage: "say <Text>",
     description: "Resends the message",
-    run: async (client, message, args, user, text, prefix, waifuPoints) => {	
+    run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {	
         if (text != "") {
             message.channel.send(text);
         }
