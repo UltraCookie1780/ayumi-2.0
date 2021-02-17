@@ -1,6 +1,6 @@
 {
   "name": "ayumi",
-  "version": "2.2.0",
+  "version": "2.2.2",
   "description": "The cookie discord server bot",
   "main": "index.js",
   "dependencies": {
