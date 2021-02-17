@@ -5,7 +5,7 @@ module.exports = {
   cooldown: 2,
   usage: "waifu",
   description: "Sends you collectable waifus",
-  run: async (client, message, args, user, text, prefix, waifuPoints) => {
+  run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {
     const Sequelize = require("sequelize");
     const { Users, Waifus } = require('../../rsc/connect')
     const url = await Waifus.findOne({ order: Sequelize.literal('random()') });
