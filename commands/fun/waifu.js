@@ -8,6 +8,7 @@ module.exports = {
   run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {
     const Sequelize = require("sequelize");
     const { Users, Waifus } = require('../../rsc/connect')
+    const { waifucost } = require('../../config.json')
     const url = await Waifus.findOne({ order: Sequelize.literal('random()') });
     message.channel.send(url.url).then((msg) => {
       msg.react("❤️").catch((err) => console.error(err));
