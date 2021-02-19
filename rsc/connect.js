@@ -44,6 +44,14 @@ Users.prototype.getWaifus = function() {
 	});
 };
 
+/* eslint-disable-next-line func-names */
+Users.prototype.getMessages = async function() {
+	const user = await Users.findOne({
+		where: { user_id: this.user_id }
+	});
+	return user.messages
+};
+
 /* eslint-enable-next-line func-names */
 Servers.prototype.verify = async function(id) {
 	const server = await Servers.findOne({ where: { server_id: id } });
