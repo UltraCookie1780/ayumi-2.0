@@ -1,31 +1,12 @@
 const { Client, Collection } = require("discord.js");
+const { Users, Waifus, Servers } = require('./rsc/connect');
+const { Op } = require('sequelize');
+const fs = require("fs");
 
 const config = require("./config.json");
 const prefix = (config.prefix);
-
-const fs = require("fs");
-
-const { Users, Waifus, Servers } = require('./rsc/connect');
-const { Op } = require('sequelize');
 const waifuPoints = new Collection();
 const servermessages = new Collection();
-
-const client = new Client({
-    disableEveryone: true,
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
-}); 
-
-client.commands = new Collection();
-const cooldowns = new Collection();
-client.aliases = new Collection();
-
-client.categories = fs.readdirSync("./commands/");
-
-["command"].forEach(handler => {
-    require(`./handlers/command`)(client);
-});
-const eventhandler = require("./handlers/events"); 
-eventhandler(client);
 
 Reflect.defineProperty(waifuPoints, 'addb', {
 	value: async function addb(id, amount) {
@@ -66,6 +47,22 @@ Reflect.defineProperty(servermessages, 'getb', {
 		return server ? server.messages : 0;
 	},
 });
+
+const client = new Client({
+    disableEveryone: true,
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+});
+
+client.commands = new Collection();
+const cooldowns = new Collection();
+client.aliases = new Collection();
+client.categories = fs.readdirSync("./commands/");
+
+["command"].forEach(handler => {
+    require(`./handlers/command`)(client);
+});
+const eventhandler = require("./handlers/events"); 
+eventhandler(client);
 
 client.on('ready', async () => {
     const wp = await Users.findAll();
