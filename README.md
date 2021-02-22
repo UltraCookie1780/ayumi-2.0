@@ -16,7 +16,8 @@ If you want to use the code and setup this bot for yourself, then follow these s
   "prefix": "(Your Custom Prefix Here)",
   "waifucost": (The price to collect a waifu),
   "dbpass": "(Your Postgres Database Password Here)",
-  "dbuser": "(Your Postgres Database Username Here)"
+  "dbuser": "(Your Postgres Database Username Here)",
+  "owner": "(Your discord ID)"
 }
 ```
 4. You will need to install all needed dependencies(Insights -> Dependency Graph)
