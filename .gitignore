@@ -3,5 +3,4 @@ node_modules/
 dev/
 commands/bu/**
 commands/bu/
-rsc/music/
 events/voiceStateUpdate.js
