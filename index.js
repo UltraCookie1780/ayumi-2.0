@@ -1,7 +1,6 @@
 //variables
 const { Client, Collection } = require("discord.js");
-const { Users, Waifus, Servers } = require('./rsc/connect');
-const { Op } = require('sequelize');
+const { Users, Servers } = require('./rsc/connect');
 const fs = require("fs");
 
 const config = require("./config.json");
