@@ -5,7 +5,7 @@ module.exports = {
   cooldown: 5,
   usage: "waifus",
   description: "Displays your waifu collection",
-  run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {
+  run: async (client, message, args, user, text, prefix) => {
     const Discord = require('discord.js');
     const { Users, Waifus } = require('../../rsc/connect');
     const User = await Users.findOne({ where: { user_id: message.author.id }});

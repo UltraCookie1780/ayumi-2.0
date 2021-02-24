@@ -5,7 +5,7 @@ module.exports = {
     cooldown: 2,
     usage: "number [<min> <max>]",
     description: "Returns a random number. Default: 1 - 100",
-    run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {
+    run: async (client, message, args, user, text, prefix) => {
         if (args == "") {
             message.reply(Math.floor(Math.random() * 100) + 1);
         } else if (!isNaN(args[0]) && !isNaN(args[1])) {

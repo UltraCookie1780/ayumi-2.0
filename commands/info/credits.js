@@ -5,7 +5,7 @@ module.exports = {
     cooldown: 2,
     usage: "credits",
     description: "Shows developer credits",
-    run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {
+    run: async (client, message, args, user, text, prefix) => {
         const { MessageEmbed } = require("discord.js");
         const embed = new MessageEmbed()
         .setColor("BLACK")

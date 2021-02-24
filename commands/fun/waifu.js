@@ -5,7 +5,7 @@ module.exports = {
   cooldown: 2,
   usage: "waifu",
   description: "Sends you collectable waifus",
-  run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {
+  run: async (client, message, args, user, text, prefix) => {
     const Sequelize = require("sequelize");
     const { Users, Waifus } = require('../../rsc/connect')
     const { waifucost } = require('../../config.json')
@@ -19,11 +19,11 @@ module.exports = {
       const collector = msg.createReactionCollector(filter, { time: 30000 });
 
       collector.on("collect", async (reaction, user) => {
-        const WaifuPoints = waifuPoints.get(message.author.id)
+        const WaifuPoints = client.waifuPoints.get(message.author.id)
         if (WaifuPoints.messages >= waifucost) {
           const { waifucost } = require("../../config.json");
           const user = await Users.findOne({ where: { user_id: message.author.id } });
-          waifuPoints.addb(message.author.id, -waifucost);
+          client.waifuPoints.addb(message.author.id, -waifucost);
           await user.addWaifu(url);
           message.reply(`your waifu list has been updated.`);
         } else {
