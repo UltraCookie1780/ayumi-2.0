@@ -6,7 +6,7 @@ module.exports = {
     owner: true,
     usage: "modify <<waifus>/<messages>> <add/remove> <<waifu-url>/<messages>> <<count>/<url>> <user>",
     description: "Modifies database data",
-    run: async (client, message, args, user, text, prefix, waifuPoints, servermessages) => {
+    run: async (client, message, args, user, text, prefix) => {
         const { Users, Waifus, UserWaifus, Servers } = require('../../rsc/connect');	
         if (args[0] == "waifus") {
             if (args[1] == "add") {
@@ -34,7 +34,7 @@ module.exports = {
                 }
                 const cnt = args[2];
                 if (!isInt(cnt)) return message.reply(`please provide a valid number.`);
-                waifuPoints.addb(target.id, cnt);
+                client.waifuPoints.addb(target.id, cnt);
                 message.reply(`the message count has been successfully added.`);
             } else if (args[1] == "remove") {
                 var target = message.mentions.members.first() || message.member;
@@ -43,7 +43,7 @@ module.exports = {
                 }
                 const cnt = args[2];
                 if (!isInt(cnt)) return message.reply(`please provide a valid number.`);
-                waifuPoints.addb(target.id, -cnt);
+                client.waifuPoints.addb(target.id, -cnt);
                 message.reply(`the message count has been successfully removed.`);
             } else {
                 message.reply(`please provide valid arguments. Expected: \`add\`/\`remove\``);
