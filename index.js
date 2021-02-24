@@ -17,7 +17,7 @@ client.waifuPoints = new Collection();
 client.servermessages = new Collection();
 client.commands = new Collection();
 client.aliases = new Collection();
-client.queue = new Collection();
+client.queue = new Map()
 client.categories = fs.readdirSync("./commands/");
 
 //help methods
