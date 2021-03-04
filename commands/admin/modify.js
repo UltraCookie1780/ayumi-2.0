@@ -4,7 +4,7 @@ module.exports = {
     aliases: ["m", "mf"],
     cooldown: 0,
     owner: true,
-    usage: "modify <<waifus>/<messages>> <add/remove> <<waifu-url>/<messages>> <<count>/<url>> <user>",
+    usage: "modify <<waifus>/<messages>> <add/remove> <<count>/<url>> <user>",
     description: "Modifies database data",
     run: async (client, message, args, user, text, prefix) => {
         const { Users, Waifus, UserWaifus, Servers } = require('../../rsc/connect');	
