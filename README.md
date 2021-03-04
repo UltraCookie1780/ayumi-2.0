@@ -17,7 +17,10 @@ If you want to use the code and setup this bot for yourself, then follow these s
   "waifucost": (The price to collect a waifu),
   "dbpass": "(Your Postgres Database Password Here)",
   "dbuser": "(Your Postgres Database Username Here)",
-  "owner": "(Your discord ID)"
+  "owner": "(Your discord ID)",
+  "privatecommands" : "(Folder name of your private commands(won't be shown with help command))",
+  "statusmsg": "(Custom status message)",
+  "statustype": "(WATCHING, PLAYING, STREAMING or LISTENING)"
 }
 ```
 4. You will need to install all needed dependencies(Insights -> Dependency Graph)
