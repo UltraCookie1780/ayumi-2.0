@@ -5,7 +5,7 @@ const config = require("../../config.json");
 module.exports = {
         name: "help",
         category: "info",
-        aliases: ["h", "commandinfo"],
+        aliases: ["h", "commandinfo", "commands"],
         cooldown: 5,
         usage: "help [Command]",
         description: "Returns all Commmands, or one specific command",
@@ -25,7 +25,7 @@ const embed = new MessageEmbed()
         return client.commands.filter(cmd => cmd.category === category)
                 .map(cmd => `\`${cmd.name}\``).join(", ")
     }
-    const info = client.categories.map(cat => stripIndents`**__${cat[0].toUpperCase() + cat.slice(1)}__**\n> ${commands(cat)}`)
+    const info = client.categories.filter(cat => cat != config.privatecommands).map(cat => stripIndents`**__${cat[0].toUpperCase() + cat.slice(1)}__**\n> ${commands(cat)}`)
     .reduce((string, category) => string + "\n" + category);
     return message.channel.send(embed.setDescription(info))
 }
