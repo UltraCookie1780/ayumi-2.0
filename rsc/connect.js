@@ -55,7 +55,11 @@ Users.prototype.getMessages = async function() {
 /* eslint-enable-next-line func-names */
 Servers.prototype.verify = async function(id) {
 	const server = await Servers.findOne({ where: { server_id: id } });
-	server.verified = true;
+	if (server.verified == true) {
+		server.verified = false;
+	} else {
+		server.verified = true;
+	}
 	return server.save();
 }
 
