@@ -26,7 +26,7 @@ module.exports = {
                     if (res.startsWith('Error:')) {
                         return message.reply(`an error occurred. Have you entered a valid URL?`);
                     }
-                    message.reply(`**<${res}>**`);
+                    message.channel.send(`**<${res}>**`);
                 });
             } else {
                 tu.custom(args[0], args[1], function(res) {
