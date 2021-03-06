@@ -4,3 +4,5 @@ dev/
 commands/bu/**
 commands/bu/
 events/voiceStateUpdate.js
+events/message.js
+rsc/badwords.json
