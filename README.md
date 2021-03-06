@@ -20,7 +20,8 @@ If you want to use the code and setup this bot for yourself, then follow these s
   "owner": "(Your discord ID)",
   "privatecommands" : "(Folder name of your private commands(won't be shown with help command))",
   "statusmsg": "(Custom status message)",
-  "statustype": "(WATCHING, PLAYING, STREAMING or LISTENING)"
+  "statustype": "(WATCHING, PLAYING, STREAMING or LISTENING)",
+  "standardcooldown": 1
 }
 ```
 4. You will need to install all needed dependencies(Insights -> Dependency Graph)
